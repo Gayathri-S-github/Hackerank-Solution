@@ -1,0 +1,57 @@
+/*
+String is said to be palindrome, if it reads the same from both the ends. Given a string S, you are allowed to perform cyclic shifts. More formally, you can pick any one character from any end (head or tail) and you can append that character at the other end. For example, if the string is "abc", then if we do a shift using the character at head position then the string becomes "bca". Similarly, if we do the shift using the character at the tail then the input string becomes "cab". Your task is to find out the minimum number of shifts needed to make the given string, a palindrome. In case, we can't convert the string to palindrome then print -1.
+*/
+
+import java.util.Scanner;
+
+public class PalyndromeTest {
+
+   static boolean isPalyndrome(String s, int shift) {
+
+       int n = s.length();
+
+       if(shift < 0) shift+=n;
+
+       for(int pos = 0; pos < n/2; pos++) {
+
+           if(s.charAt((pos+shift)%n) != s.charAt((n-pos-1+shift)%n))
+
+               return false;
+
+       }
+
+       return true;
+
+   }
+
+   static int findShift(String s) {
+
+       for(int shift = 0; shift <= s.length()/2; shift++) {
+
+           if(isPalyndrome(s, shift) || isPalyndrome(s, -shift))
+
+               return shift;
+
+       }
+
+       return -1;
+
+   }
+
+   public static void main(String[] args) {
+
+       Scanner s = new Scanner(System.in);
+
+       int count = s.nextInt();
+
+       s.nextLine();
+
+       for(int i=0; i<count; i++) {
+
+           System.out.println(findShift(s.nextLine()));
+
+       }
+
+   }
+
+}

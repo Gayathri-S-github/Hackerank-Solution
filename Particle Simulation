@@ -1,0 +1,56 @@
+import java.util.*;
+import java.lang.Math.*;
+public class MainWeek22 
+{
+    static ArrayList<Integer> results = new ArrayList<Integer>();
+    static int m;
+    static ArrayList<Integer> num=new ArrayList<Integer>(); 
+    static ArrayList<Integer> copy = new ArrayList<Integer>();
+    
+    public static void particles(ArrayList <Integer> num)
+    {
+        if(num.size()>1)
+        {
+            for (int i=0;i<num.size();i++)
+            {
+                for(int j=0;j<num.size();j++)
+                {
+                    if (i==j)
+                        break;
+                    int temp = Math.abs(num.get(i)-num.get(j));
+                    if(m > temp)
+                       m = temp;
+System.out.println(num);
+                    copy = (ArrayList) num.clone();
+                    copy.remove(i);
+                    copy.remove(j);
+                    copy.add(temp);
+                    particles(copy);
+                    
+                }
+            }
+        }
+    }
+	public static void main(String[] args)throws Exception {
+	    Scanner in = new Scanner(System.in);
+	    int T = in.nextInt();
+	    for (int i=0;i<T;i++)
+	    {
+	        int N = in.nextInt();
+	        
+	        for (int j=0;j<N;j++)
+	        {
+	            num.add(in.nextInt());
+	        }
+	        m = Collections.min(num);
+	        particles(num);
+	        results.add(m);
+	        num.clear();
+	        copy.clear();
+	        
+	    }
+	    for(int i=0;i<results.size();i++)
+	    {
+	        System.out.println(results.get(i));
+	    }
+	}}

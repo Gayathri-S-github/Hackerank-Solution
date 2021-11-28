@@ -1,0 +1,106 @@
+/*
+Input Format:
+
+First line contains the distance of Rider A from intersection denoted by x
+Second line contains the distance of Rider B from intersection denoted by y
+Third line contains the Velocity of Rider A denoted by VA
+Fourth line contains the Velocity of Rider B denoted by VB
+Output Format:
+
+Print the minimum distance between these two riders, if minimum distance is non-zero. If minimum distance is zero, print it as 0.0
+Constraints:
+x > 0
+y > 0
+VA > 0 
+VB > 0 
+Calculation and printing of output should be done upto 11-precision
+
+Sample Input and Output
+
+Input 1	
+100
+100
+10
+10	
+Output 1
+0.0
+Input	2	
+500
+300
+20
+14
+Output 2
+41.18252056395
+Input 3	
+100
+100
+30
+40
+Output 3
+22.36067977500
+Input 4	
+0
+50
+-20
+30
+Output 4
+Invalid Input
+*/
+
+PROGRAM:
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+static int x,y,va,vb;
+static double minimum,distance;
+static ArrayList<Double> list=new ArrayList<Double>();	    
+    static void MinimumDistance(int x,int y,int va,int vb)
+    {
+        if(x<0 ||y<0 ||va<0 ||vb<0)
+        System.out.printf("Invalid Input");
+        else{
+            minimum=Math.sqrt(x*x+y*y);
+            while(x>=0 || y>=0)
+            {
+                x- = va;
+                y- = vb;
+                distance=Math.sqrt(x*x+y*y);
+                if(distance<minimum)
+                minimum=distance;
+            }
+            if(minimum==0.0)
+            list.add(0.0);
+            else
+            list.add(minimum);
+            }
+            
+            }
+	public static void main(String[] args) {
+	     Scanner scan=new Scanner(System.in);
+	    int T=scan.nextInt();
+	    for(int i=0;i<T;i++)
+	    {
+	        x=scan.nextInt();
+	        y=scan.nextInt();
+	        va=scan.nextInt();
+	        vb=scan.nextInt();
+	        MinimumDistance(x,y,va,vb);
+	    }
+	      Double[] arr = new Double[list.size()]; 
+	    for (int i = 0; i < list.size(); i++)
+            arr[i] = list.get(i);
+  
+        for (Double dou : arr)
+        {
+           // System.out.print(x + " ");
+            if(dou==0.0)
+                System.out.println("0.0");
+                else
+             System.out.println(String.format("%.11f", dou) );
+        }
+	}
+}
+
+

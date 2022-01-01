@@ -1,0 +1,55 @@
+// 3/3 test cases passed
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    static int X=6,Y=22,N,T;
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+       
+        int array2[]=new int[20];
+        Scanner scan=new Scanner(System.in);
+        //N=scan.nextInt();
+        T=scan.nextInt();
+        for(int i=0;i<T;i++)
+        {
+            array2[i]=scan.nextInt();
+        }
+        for(int j=0;j<T;j++)
+        {
+            calculation(array2[j]);
+        }
+    }
+    static void calculation(int N)
+    {
+        
+        if(N>0&&N<=14)
+        {
+            for(int i=1;i<=N;i++)
+            {
+                for(int j=i;j<N;j++)
+                {
+                    System.out.print(" ");
+                    System.out.print(" ");
+                    System.out.print(" ");
+                }
+                for(int k=1;k<=i;k++)
+                {
+                    String with5digits=String.format("%05d",X);
+                    System.out.print(with5digits+" ");
+                    X=X+Y;
+                    Y=Y+16;
+                    
+                }
+                System.out.printf("\n");
+            }
+        }
+        X=6;
+        Y=22;
+    }
+}
+

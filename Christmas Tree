@@ -1,0 +1,102 @@
+
+
+
+//Only one test cases passed
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int T;
+ int array[]=new int[10];
+ Scanner scan=new Scanner(System.in);
+ T=scan.nextInt();
+ for(int i1=0;i1<T;i1++)
+ {
+ array[i1]=scan.nextInt();
+ }
+ for(int i2=0;i2<T;i2++)
+ {
+     calculation(array[i2]);
+ }
+ 
+}
+static void calculation(int n)
+{
+ if(n<=1)
+ {
+  System.out.printf("You cannot generate christmas tree\n");
+ }
+ else if(n>20)
+ {
+  System.out.printf("Tree is no more\n");
+ }
+ else
+ {
+  for(int i=0;i<n+1;i++)
+  {
+   for(int j=i;j<n;j++)
+   {
+    System.out.printf(" ");
+   }
+   for(int k=0;k<=(2*i);k++)
+   {
+    System.out.printf("*"); 
+   }
+   System.out.printf("\n");
+  }
+  if(n>2)
+  {
+   for(int s=0;s<n-1;s++)
+   {
+    for(int p=s;p<n-1;p++)
+    {
+     System.out.printf(" ");    
+    }
+    for(int q=0;q<(2*(s+2))-1;q++)
+    {
+     System.out.printf("*");
+    }
+    for(int p=s;p<n-1;p++)
+    {
+     System.out.printf(" ");    
+    }
+    System.out.printf("\n");  
+   }
+   for(int t=0;t<n-3;t++)
+   {
+    for(int s=0;s<n-2;s++)
+    {
+     for(int p=s;p<n-1;p++)
+     {
+      System.out.printf(" ");    
+     }
+     for(int q=0;q<(2*(s+2))-1;q++)
+     {
+      System.out.printf("*");
+     }
+     for(int p=s;p<n-1;p++)
+     {
+      System.out.printf(" ");    
+     }
+     System.out.printf("\n"); 
+    } 
+   }
+  }
+  for(int p=0;p<2;p++)
+  {
+   for(int q=0;q<n;q++)
+   {
+    System.out.printf(" ");
+   }
+   System.out.printf("*");
+   for(int q=0;q<n;q++)
+   {
+    System.out.printf(" ");
+   }  
+   System.out.printf("\n"); 
+  }
+		
+		
+	}
+}
+}

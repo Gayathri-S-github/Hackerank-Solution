@@ -1,0 +1,49 @@
+// All test cases passed
+// https://codewindow.in/array-minimum-sum-of-products-codewindow-in/
+// https://www.youtube.com/watch?v=V3-G0k2x4pc
+
+
+
+import java.io.*;
+import java.util.*;
+public class Main {
+static Scanner scan=new Scanner(System.in);
+static long min(long a,long b){
+ if(a<b)
+return a;
+else
+return b;
+}
+static long[] input_arr(int size){
+long []arr=new long[size];
+for(int i=0;i<size;i++){
+arr[i]=scan.nextLong();
+ }
+ return arr;
+}
+public static void main(String[] args)throws Exception{
+int T=scan.nextInt();
+while(T-- >0){
+int n=scan.nextInt();
+ int k=scan.nextInt();
+ long[] A=input_arr(n);
+ long[] B=input_arr(n);
+long original_sum=0;
+ long new_sum=0;
+for(int i=0;i<n;i++){
+ original_sum=original_sum+A[i]*B[i];	        
+}
+new_sum=original_sum;
+long curr_prod=0; long select_prod=0;
+long temp_sum=0;
+for(int i=0;i<n;i++)
+ {
+ curr_prod=A[i]*B[i];
+select_prod=min((A[i]+2*k)*B[i],(A[i]-2*k)*B[i]);
+ temp_sum=original_sum-curr_prod+select_prod;
+ new_sum=min(temp_sum,new_sum);
+ }
+ System.out.println(new_sum);
+}
+  }
+}
